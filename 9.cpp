@@ -1,5 +1,5 @@
-// Ëàáîðàòîðíàÿ ðàáîòà ¹9
-// Âàðèàíò 1.
+// Лабораторная работа №9
+// Вариант 1
 
 #define _CRT_SECURE_NO_WARNINGS
 #define _CRT_NONSTDC_NO_DEPRECATE 
@@ -10,18 +10,18 @@
 
 using namespace std;
 
-FILE* source;						// Ôàéë èñòî÷íèê (F1.txt)
-FILE* target;						// Ôàéë äëÿ ðåçóëüòàòà çàäàíèÿ (F2.txt)
-const int MAXLINESIZE = 255;		// Ìàêñèìàëüíàÿ äëèíà ñòðîêè
+FILE* source;						// Файл источник (F1.txt)
+FILE* target;						// Файл для результата задания (F2.txt)
+const int MAXLINESIZE = 255;		// Максимальная длина строки
 
-/* Çàäàíèå 1 */
+/* Задание 1 */
 void task_1() {
-	source = fopen("F1.txt", "r");		// Îòêðûòèå ôàéëà F1 äëÿ ÷òåíèÿ
-	target = fopen("F2.txt", "w");		// Îòêðûòèå ôàéëà F2 äëÿ çàïèñè
+	source = fopen("F1.txt", "r");		// Открытие файла F1 для чтения
+	target = fopen("F2.txt", "w");		// Открытие файла F2 для записи
 	char buff[MAXLINESIZE];	
 
 	int counter = 1;
-	// Ïîêà íå êîíåö ôàéëà ñ÷èòûâàþòñÿ ñòðîêè ôàéëà F1 è ïðîâåðÿåòñÿ ÷åòíîñòü ñòðîê ñ÷åò÷èêîì counter
+	// Пока не конец файла считываются строки файла F1 и проверяется четность строк счетчиком counter
 	while (!feof(source)) {
 		fgets(buff, MAXLINESIZE, source);
 		if (counter % 2 == 0) {
@@ -34,11 +34,11 @@ void task_1() {
 	fclose(target);
 }
 
-/* Çàäàíèå 2 */
+/* Задание 2 */
 void task_2() {
-	source = fopen("F1.txt", "rb");		// Îòêðûòèå ôàéëà íà ÷òåíèå êàê äâîè÷íîãî
-	fseek(source, 0, SEEK_END);			// Ïåðåìåùåíèå óêàçàòåëÿ â ôàéëå íà åãî êîíåö
-	int size1 = ftell(source);			// ftell âîçâðàùàåò òåêóùåå çíà÷åíèå óêàçàòåëÿ â âèäå êîëè÷åñòâà áàéò
+	source = fopen("F1.txt", "rb");		// Открытие файла на чтение как двоичного
+	fseek(source, 0, SEEK_END);			// Перемещение указателя в файле на его конец
+	int size1 = ftell(source);			// ftell возвращает текущее значение указателя в виде количества байт
 	fclose(source);
 
 	target = fopen("F2.txt", "rb");
@@ -46,7 +46,7 @@ void task_2() {
 	int size2 = ftell(target);
 	fclose(target);
 
-	cout << "> Ðàçìåð ôàéëà F1.txt: " << size1 << " ÌÁ" << endl << "> Ðàçìåð ôàéëà F2.txt: " << size2 << " ÌÁ" << endl;
+	cout << "> Размер файла F1.txt: " << size1 << " МБ" << endl << "> Размер файла F2.txt: " << size2 << " МБ" << endl;
 }
 
 void main() {
