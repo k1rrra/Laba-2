@@ -53,9 +53,9 @@ int main(int argc, char** argv) {
     cin>>a1;
     cout<<"b1 = ";
     cin>>b1;
-    cout<<"a1 = ";
+    cout<<"a2 = ";
     cin>>a2;
-    cout<<"b1 = ";
+    cout<<"b2 = ";
     cin>>b2;
 	cout<<"z1 + z2 = ";
 	sum(a1,b1,a2,b2);
